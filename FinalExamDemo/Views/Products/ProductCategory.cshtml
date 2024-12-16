@@ -29,12 +29,15 @@
 	</div>
 </div>
 
-<ul class="pagination">
-	@for (int i = 1; i <= ViewBag.PageNum; i++)
-	{
-		<li class="page-item" page="@i" @(ViewBag.Cid != null ? "cid = 'ViewBag.Cid'" : "")>
-			<a class="page-link">@i</a>
-		</li>
-	}
-</ul>
+@if (ViewBag.PageNum > 1)
+{
+	<ul class="pagination">
+		@for (int i = 1; i <= ViewBag.PageNum; i++)
+		{
+			<li class="page-item" page="@i" @(ViewBag.Cid != null ? "cid = 'ViewBag.Cid'" : "")>
+				<a class="page-link">@i</a>
+			</li>
+		}
+	</ul>
+}
 <!-- //main right -->
