@@ -1,0 +1,40 @@
+﻿@model IEnumerable<FinalExamDemo.Models.Product>
+
+<!-- main right -->
+<div id="mainright" class="agileinfo-ads-display col-md-9">
+	<div class="wrapper">
+		@foreach (var item in Model)
+		{
+			string imgUrl = Url.Content($"~/Template/images/{item.Image}");
+
+			<div class="col-xs-4 product-men">
+				<div class="men-pro-item">
+					<div class="men-thumb-item">
+						<img src=@imgUrl alt="">
+					</div>
+					<div class="item-info-product ">
+						<h4>
+							<a href="single.html">@item.Name</a>
+						</h4>
+						<div class="info-product-price">
+							<span class="item_price">@item.UnitPrice</span>
+						</div>
+						<div class="snipcart-details">
+							<a asp-action="Details" asp-route-id="@item.Id" class="button">Edit</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+</div>
+
+<ul class="pagination">
+	@for (int i = 1; i <= ViewBag.PageNum; i++)
+	{
+		<li class="page-item" page="@i" @(ViewBag.Cid != null ? "cid = 'ViewBag.Cid'" : "")>
+			<a class="page-link">@i</a>
+		</li>
+	}
+</ul>
+<!-- //main right -->
